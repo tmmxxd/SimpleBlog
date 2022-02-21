@@ -1,16 +1,26 @@
 package priv.zg.mapper;
 
-import priv.zg.entity.Users;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import priv.zg.domain.Users;
 
 /**
- * <p>
- * 用户表 Mapper 接口
- * </p>
+ * 针对表【users(用户表)】的数据库操作Mapper
  *
- * @author xm
- * @since 2022-02-17
+ * @author tanshizhong
+ * @date 2022-02-21 17:03:53
  */
 public interface UsersMapper extends BaseMapper<Users> {
+
+    int deleteByPrimaryKey(Long id);
+
+    int insert(Users record);
+
+    int insertSelective(Users record);
+
+    Users selectByPrimaryKey(Long id);
+
+    int updateByPrimaryKeySelective(Users record);
+
+    int updateByPrimaryKey(Users record);
 
 }

@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="priv.zg.mapper.CommentsMapper">
+
+    <resultMap id="BaseResultMap" type="priv.zg.domain.Comments">
+        <id property="commentId" column="comment_id" jdbcType="BIGINT"/>
+        <result property="userId" column="user_id" jdbcType="BIGINT"/>
+        <result property="articleId" column="article_id" jdbcType="BIGINT"/>
+        <result property="commentLikeCount" column="comment_like_count" jdbcType="BIGINT"/>
+        <result property="commentDate" column="comment_date" jdbcType="TIMESTAMP"/>
+        <result property="commentContent" column="comment_content" jdbcType="VARCHAR"/>
+        <result property="parentCommentId" column="parent_comment_id" jdbcType="BIGINT"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        comment_id,user_id,article_id,
+        comment_like_count,comment_date,comment_content,
+        parent_comment_id
+    </sql>
+
+    <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from comments
+        where comment_id = #{commentId,jdbcType=BIGINT}
+    </select>
+
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+        DELETE
+        FROM comments
+        WHERE comment_id = #{commentId,jdbcType=BIGINT}
+    </delete>
+    <insert id="insert" keyColumn="comment_id" keyProperty="commentId" parameterType="priv.zg.domain.Comments"
+            useGeneratedKeys="true">
+        INSERT INTO comments
+        ( comment_id, user_id, article_id
+        , comment_like_count, comment_date, comment_content
+        , parent_comment_id)
+        VALUES ( #{commentId,jdbcType=BIGINT}, #{userId,jdbcType=BIGINT}, #{articleId,jdbcType=BIGINT}
+               , #{commentLikeCount,jdbcType=BIGINT}, #{commentDate,jdbcType=TIMESTAMP}
+               , #{commentContent,jdbcType=VARCHAR}
+               , #{parentCommentId,jdbcType=BIGINT})
+    </insert>
+    <insert id="insertSelective" keyColumn="comment_id" keyProperty="commentId" parameterType="priv.zg.domain.Comments"
+            useGeneratedKeys="true">
+        insert into comments
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="commentId != null">comment_id,</if>
+            <if test="userId != null">user_id,</if>
+            <if test="articleId != null">article_id,</if>
+            <if test="commentLikeCount != null">comment_like_count,</if>
+            <if test="commentDate != null">comment_date,</if>
+            <if test="commentContent != null">comment_content,</if>
+            <if test="parentCommentId != null">parent_comment_id,</if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="commentId != null">#{commentId,jdbcType=BIGINT},</if>
+            <if test="userId != null">#{userId,jdbcType=BIGINT},</if>
+            <if test="articleId != null">#{articleId,jdbcType=BIGINT},</if>
+            <if test="commentLikeCount != null">#{commentLikeCount,jdbcType=BIGINT},</if>
+            <if test="commentDate != null">#{commentDate,jdbcType=TIMESTAMP},</if>
+            <if test="commentContent != null">#{commentContent,jdbcType=VARCHAR},</if>
+            <if test="parentCommentId != null">#{parentCommentId,jdbcType=BIGINT},</if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="priv.zg.domain.Comments">
+        update comments
+        <set>
+            <if test="userId != null">
+                user_id = #{userId,jdbcType=BIGINT},
+            </if>
+            <if test="articleId != null">
+                article_id = #{articleId,jdbcType=BIGINT},
+            </if>
+            <if test="commentLikeCount != null">
+                comment_like_count = #{commentLikeCount,jdbcType=BIGINT},
+            </if>
+            <if test="commentDate != null">
+                comment_date = #{commentDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="commentContent != null">
+                comment_content = #{commentContent,jdbcType=VARCHAR},
+            </if>
+            <if test="parentCommentId != null">
+                parent_comment_id = #{parentCommentId,jdbcType=BIGINT},
+            </if>
+        </set>
+        where comment_id = #{commentId,jdbcType=BIGINT}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="priv.zg.domain.Comments">
+        UPDATE comments
+        SET user_id            = #{userId,jdbcType=BIGINT},
+            article_id         = #{articleId,jdbcType=BIGINT},
+            comment_like_count = #{commentLikeCount,jdbcType=BIGINT},
+            comment_date       = #{commentDate,jdbcType=TIMESTAMP},
+            comment_content    = #{commentContent,jdbcType=VARCHAR},
+            parent_comment_id  = #{parentCommentId,jdbcType=BIGINT}
+        WHERE comment_id = #{commentId,jdbcType=BIGINT}
+    </update>
+</mapper>

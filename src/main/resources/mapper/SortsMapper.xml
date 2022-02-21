@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="priv.zg.mapper.SortsMapper">
+
+    <resultMap id="BaseResultMap" type="priv.zg.domain.Sorts">
+        <id property="sortId" column="sort_id" jdbcType="BIGINT"/>
+        <result property="sortName" column="sort_name" jdbcType="VARCHAR"/>
+        <result property="sortAlias" column="sort_alias" jdbcType="VARCHAR"/>
+        <result property="sortDescription" column="sort_description" jdbcType="VARCHAR"/>
+        <result property="parentSortId" column="parent_sort_id" jdbcType="BIGINT"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        sort_id,sort_name,sort_alias,
+        sort_description,parent_sort_id
+    </sql>
+
+    <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from sorts
+        where sort_id = #{sortId,jdbcType=BIGINT}
+    </select>
+
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+        DELETE
+        FROM sorts
+        WHERE sort_id = #{sortId,jdbcType=BIGINT}
+    </delete>
+    <insert id="insert" keyColumn="sort_id" keyProperty="sortId" parameterType="priv.zg.domain.Sorts"
+            useGeneratedKeys="true">
+        INSERT INTO sorts
+        ( sort_id, sort_name, sort_alias
+        , sort_description, parent_sort_id)
+        VALUES ( #{sortId,jdbcType=BIGINT}, #{sortName,jdbcType=VARCHAR}, #{sortAlias,jdbcType=VARCHAR}
+               , #{sortDescription,jdbcType=VARCHAR}, #{parentSortId,jdbcType=BIGINT})
+    </insert>
+    <insert id="insertSelective" keyColumn="sort_id" keyProperty="sortId" parameterType="priv.zg.domain.Sorts"
+            useGeneratedKeys="true">
+        insert into sorts
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="sortId != null">sort_id,</if>
+            <if test="sortName != null">sort_name,</if>
+            <if test="sortAlias != null">sort_alias,</if>
+            <if test="sortDescription != null">sort_description,</if>
+            <if test="parentSortId != null">parent_sort_id,</if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="sortId != null">#{sortId,jdbcType=BIGINT},</if>
+            <if test="sortName != null">#{sortName,jdbcType=VARCHAR},</if>
+            <if test="sortAlias != null">#{sortAlias,jdbcType=VARCHAR},</if>
+            <if test="sortDescription != null">#{sortDescription,jdbcType=VARCHAR},</if>
+            <if test="parentSortId != null">#{parentSortId,jdbcType=BIGINT},</if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="priv.zg.domain.Sorts">
+        update sorts
+        <set>
+            <if test="sortName != null">
+                sort_name = #{sortName,jdbcType=VARCHAR},
+            </if>
+            <if test="sortAlias != null">
+                sort_alias = #{sortAlias,jdbcType=VARCHAR},
+            </if>
+            <if test="sortDescription != null">
+                sort_description = #{sortDescription,jdbcType=VARCHAR},
+            </if>
+            <if test="parentSortId != null">
+                parent_sort_id = #{parentSortId,jdbcType=BIGINT},
+            </if>
+        </set>
+        where sort_id = #{sortId,jdbcType=BIGINT}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="priv.zg.domain.Sorts">
+        UPDATE sorts
+        SET sort_name        = #{sortName,jdbcType=VARCHAR},
+            sort_alias       = #{sortAlias,jdbcType=VARCHAR},
+            sort_description = #{sortDescription,jdbcType=VARCHAR},
+            parent_sort_id   = #{parentSortId,jdbcType=BIGINT}
+        WHERE sort_id = #{sortId,jdbcType=BIGINT}
+    </update>
+</mapper>

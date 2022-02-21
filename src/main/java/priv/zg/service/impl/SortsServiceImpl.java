@@ -1,20 +1,23 @@
 package priv.zg.service.impl;
 
-import priv.zg.entity.Sorts;
-import priv.zg.mapper.SortsMapper;
-import priv.zg.service.ISortsService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import priv.zg.domain.Sorts;
+import priv.zg.service.SortsService;
+import priv.zg.mapper.SortsMapper;
 import org.springframework.stereotype.Service;
 
 /**
- * <p>
- * 分类表 服务实现类
- * </p>
+ * 【sorts(分类表)】数据库操作Service实现
  *
- * @author xm
- * @since 2022-02-17
+ * @author tanshizhong
+ * @date 2022-02-21 17:02:52
  */
 @Service
-public class SortsServiceImpl extends ServiceImpl<SortsMapper, Sorts> implements ISortsService {
+public class SortsServiceImpl extends ServiceImpl<SortsMapper, Sorts>
+        implements SortsService {
 
 }
+
+
+
+

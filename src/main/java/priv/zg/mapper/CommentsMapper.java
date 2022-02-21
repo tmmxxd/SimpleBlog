@@ -1,16 +1,26 @@
 package priv.zg.mapper;
 
-import priv.zg.entity.Comments;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import priv.zg.domain.Comments;
 
 /**
- * <p>
- * 评论表 Mapper 接口
- * </p>
+ * 针对表【comments(评论表)】的数据库操作Mapper
  *
- * @author xm
- * @since 2022-02-17
+ * @author tanshizhong
+ * @date 2022-02-21 17:03:53
  */
 public interface CommentsMapper extends BaseMapper<Comments> {
+
+    int deleteByPrimaryKey(Long id);
+
+    int insert(Comments record);
+
+    int insertSelective(Comments record);
+
+    Comments selectByPrimaryKey(Long id);
+
+    int updateByPrimaryKeySelective(Comments record);
+
+    int updateByPrimaryKey(Comments record);
 
 }

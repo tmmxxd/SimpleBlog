@@ -1,20 +1,23 @@
 package priv.zg.service.impl;
 
-import priv.zg.entity.Comments;
-import priv.zg.mapper.CommentsMapper;
-import priv.zg.service.ICommentsService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import priv.zg.domain.Comments;
+import priv.zg.service.CommentsService;
+import priv.zg.mapper.CommentsMapper;
 import org.springframework.stereotype.Service;
 
 /**
- * <p>
- * 评论表 服务实现类
- * </p>
+ * 【comments(评论表)】数据库操作Service实现
  *
- * @author xm
- * @since 2022-02-17
+ * @author tanshizhong
+ * @date 2022-02-21 17:02:52
  */
 @Service
-public class CommentsServiceImpl extends ServiceImpl<CommentsMapper, Comments> implements ICommentsService {
+public class CommentsServiceImpl extends ServiceImpl<CommentsMapper, Comments>
+        implements CommentsService {
 
 }
+
+
+
+

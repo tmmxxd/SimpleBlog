@@ -1,20 +1,23 @@
 package priv.zg.service.impl;
 
-import priv.zg.entity.SetArticleLabel;
-import priv.zg.mapper.SetArticleLabelMapper;
-import priv.zg.service.ISetArticleLabelService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import priv.zg.domain.SetArticleLabel;
+import priv.zg.service.SetArticleLabelService;
+import priv.zg.mapper.SetArticleLabelMapper;
 import org.springframework.stereotype.Service;
 
 /**
- * <p>
- * 文章设置标签表 服务实现类
- * </p>
+ * 【set_article_label(文章设置标签表)】数据库操作Service实现
  *
- * @author xm
- * @since 2022-02-17
+ * @author tanshizhong
+ * @date 2022-02-21 17:02:52
  */
 @Service
-public class SetArticleLabelServiceImpl extends ServiceImpl<SetArticleLabelMapper, SetArticleLabel> implements ISetArticleLabelService {
+public class SetArticleLabelServiceImpl extends ServiceImpl<SetArticleLabelMapper, SetArticleLabel>
+        implements SetArticleLabelService {
 
 }
+
+
+
+

@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="priv.zg.mapper.ArticlesMapper">
+
+    <resultMap id="BaseResultMap" type="priv.zg.domain.Articles">
+        <id property="articleId" column="article_id" jdbcType="BIGINT"/>
+        <result property="userId" column="user_id" jdbcType="BIGINT"/>
+        <result property="articleTitle" column="article_title" jdbcType="VARCHAR"/>
+        <result property="articleContent" column="article_content" jdbcType="VARCHAR"/>
+        <result property="articleViews" column="article_views" jdbcType="BIGINT"/>
+        <result property="articleCommentCount" column="article_comment_count" jdbcType="BIGINT"/>
+        <result property="articleDate" column="article_date" jdbcType="TIMESTAMP"/>
+        <result property="articleLikeCount" column="article_like_count" jdbcType="BIGINT"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        article_id,user_id,article_title,
+        article_content,article_views,article_comment_count,
+        article_date,article_like_count
+    </sql>
+
+    <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from articles
+        where article_id = #{articleId,jdbcType=BIGINT}
+    </select>
+
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+        DELETE
+        FROM articles
+        WHERE article_id = #{articleId,jdbcType=BIGINT}
+    </delete>
+    <insert id="insert" keyColumn="article_id" keyProperty="articleId" parameterType="priv.zg.domain.Articles"
+            useGeneratedKeys="true">
+        INSERT INTO articles
+        ( article_id, user_id, article_title
+        , article_content, article_views, article_comment_count
+        , article_date, article_like_count)
+        VALUES ( #{articleId,jdbcType=BIGINT}, #{userId,jdbcType=BIGINT}, #{articleTitle,jdbcType=VARCHAR}
+               , #{articleContent,jdbcType=VARCHAR}, #{articleViews,jdbcType=BIGINT}
+               , #{articleCommentCount,jdbcType=BIGINT}
+               , #{articleDate,jdbcType=TIMESTAMP}, #{articleLikeCount,jdbcType=BIGINT})
+    </insert>
+    <insert id="insertSelective" keyColumn="article_id" keyProperty="articleId" parameterType="priv.zg.domain.Articles"
+            useGeneratedKeys="true">
+        insert into articles
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="articleId != null">article_id,</if>
+            <if test="userId != null">user_id,</if>
+            <if test="articleTitle != null">article_title,</if>
+            <if test="articleContent != null">article_content,</if>
+            <if test="articleViews != null">article_views,</if>
+            <if test="articleCommentCount != null">article_comment_count,</if>
+            <if test="articleDate != null">article_date,</if>
+            <if test="articleLikeCount != null">article_like_count,</if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="articleId != null">#{articleId,jdbcType=BIGINT},</if>
+            <if test="userId != null">#{userId,jdbcType=BIGINT},</if>
+            <if test="articleTitle != null">#{articleTitle,jdbcType=VARCHAR},</if>
+            <if test="articleContent != null">#{articleContent,jdbcType=VARCHAR},</if>
+            <if test="articleViews != null">#{articleViews,jdbcType=BIGINT},</if>
+            <if test="articleCommentCount != null">#{articleCommentCount,jdbcType=BIGINT},</if>
+            <if test="articleDate != null">#{articleDate,jdbcType=TIMESTAMP},</if>
+            <if test="articleLikeCount != null">#{articleLikeCount,jdbcType=BIGINT},</if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="priv.zg.domain.Articles">
+        update articles
+        <set>
+            <if test="userId != null">
+                user_id = #{userId,jdbcType=BIGINT},
+            </if>
+            <if test="articleTitle != null">
+                article_title = #{articleTitle,jdbcType=VARCHAR},
+            </if>
+            <if test="articleContent != null">
+                article_content = #{articleContent,jdbcType=VARCHAR},
+            </if>
+            <if test="articleViews != null">
+                article_views = #{articleViews,jdbcType=BIGINT},
+            </if>
+            <if test="articleCommentCount != null">
+                article_comment_count = #{articleCommentCount,jdbcType=BIGINT},
+            </if>
+            <if test="articleDate != null">
+                article_date = #{articleDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="articleLikeCount != null">
+                article_like_count = #{articleLikeCount,jdbcType=BIGINT},
+            </if>
+        </set>
+        where article_id = #{articleId,jdbcType=BIGINT}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="priv.zg.domain.Articles">
+        UPDATE articles
+        SET user_id               = #{userId,jdbcType=BIGINT},
+            article_title         = #{articleTitle,jdbcType=VARCHAR},
+            article_content       = #{articleContent,jdbcType=VARCHAR},
+            article_views         = #{articleViews,jdbcType=BIGINT},
+            article_comment_count = #{articleCommentCount,jdbcType=BIGINT},
+            article_date          = #{articleDate,jdbcType=TIMESTAMP},
+            article_like_count    = #{articleLikeCount,jdbcType=BIGINT}
+        WHERE article_id = #{articleId,jdbcType=BIGINT}
+    </update>
+</mapper>

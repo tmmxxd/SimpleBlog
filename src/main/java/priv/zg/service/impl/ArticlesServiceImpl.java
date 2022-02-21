@@ -1,20 +1,23 @@
 package priv.zg.service.impl;
 
-import priv.zg.entity.Articles;
-import priv.zg.mapper.ArticlesMapper;
-import priv.zg.service.IArticlesService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import priv.zg.domain.Articles;
+import priv.zg.service.ArticlesService;
+import priv.zg.mapper.ArticlesMapper;
 import org.springframework.stereotype.Service;
 
 /**
- * <p>
- * 博文表 服务实现类
- * </p>
+ * 【articles(博文表)】数据库操作Service实现
  *
- * @author xm
- * @since 2022-02-17
+ * @author tanshizhong
+ * @date 2022-02-21 17:02:51
  */
 @Service
-public class ArticlesServiceImpl extends ServiceImpl<ArticlesMapper, Articles> implements IArticlesService {
+public class ArticlesServiceImpl extends ServiceImpl<ArticlesMapper, Articles>
+        implements ArticlesService {
 
 }
+
+
+
+

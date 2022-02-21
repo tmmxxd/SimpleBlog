@@ -1,16 +1,26 @@
 package priv.zg.mapper;
 
-import priv.zg.entity.SetArticleSort;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import priv.zg.domain.SetArticleSort;
 
 /**
- * <p>
- * 文章设置分类表 Mapper 接口
- * </p>
+ * 针对表【set_article_sort(文章设置分类表)】的数据库操作Mapper
  *
- * @author xm
- * @since 2022-02-17
+ * @author tanshizhong
+ * @date 2022-02-21 17:03:53
  */
 public interface SetArticleSortMapper extends BaseMapper<SetArticleSort> {
+
+    int deleteByPrimaryKey(Long id);
+
+    int insert(SetArticleSort record);
+
+    int insertSelective(SetArticleSort record);
+
+    SetArticleSort selectByPrimaryKey(Long id);
+
+    int updateByPrimaryKeySelective(SetArticleSort record);
+
+    int updateByPrimaryKey(SetArticleSort record);
 
 }

@@ -1,20 +1,23 @@
 package priv.zg.service.impl;
 
-import priv.zg.entity.SetArticleSort;
-import priv.zg.mapper.SetArticleSortMapper;
-import priv.zg.service.ISetArticleSortService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import priv.zg.domain.SetArticleSort;
+import priv.zg.service.SetArticleSortService;
+import priv.zg.mapper.SetArticleSortMapper;
 import org.springframework.stereotype.Service;
 
 /**
- * <p>
- * 文章设置分类表 服务实现类
- * </p>
+ * 【set_article_sort(文章设置分类表)】数据库操作Service实现
  *
- * @author xm
- * @since 2022-02-17
+ * @author tanshizhong
+ * @date 2022-02-21 17:02:52
  */
 @Service
-public class SetArticleSortServiceImpl extends ServiceImpl<SetArticleSortMapper, SetArticleSort> implements ISetArticleSortService {
+public class SetArticleSortServiceImpl extends ServiceImpl<SetArticleSortMapper, SetArticleSort>
+        implements SetArticleSortService {
 
 }
+
+
+
+

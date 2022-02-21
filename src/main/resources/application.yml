@@ -19,3 +19,4 @@ mybatis-plus:
   type-aliases-package: priv.zg.pojo
   configuration:
     map-underscore-to-camel-case: true
+  mapper-locations: classpath:mapper/*Mapper.xml

@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="priv.zg.mapper.UserFriendsMapper">
+
+    <resultMap id="BaseResultMap" type="priv.zg.domain.UserFriends">
+        <id property="id" column="id" jdbcType="BIGINT"/>
+        <result property="userId" column="user_id" jdbcType="BIGINT"/>
+        <result property="userFriendsId" column="user_friends_id" jdbcType="BIGINT"/>
+        <result property="userNote" column="user_note" jdbcType="VARCHAR"/>
+        <result property="userStatus" column="user_status" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id,user_id,user_friends_id,
+        user_note,user_status
+    </sql>
+
+    <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from user_friends
+        where id = #{id,jdbcType=BIGINT}
+    </select>
+
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+        DELETE
+        FROM user_friends
+        WHERE id = #{id,jdbcType=BIGINT}
+    </delete>
+    <insert id="insert" keyColumn="id" keyProperty="id" parameterType="priv.zg.domain.UserFriends"
+            useGeneratedKeys="true">
+        INSERT INTO user_friends
+        ( id, user_id, user_friends_id
+        , user_note, user_status)
+        VALUES ( #{id,jdbcType=BIGINT}, #{userId,jdbcType=BIGINT}, #{userFriendsId,jdbcType=BIGINT}
+               , #{userNote,jdbcType=VARCHAR}, #{userStatus,jdbcType=VARCHAR})
+    </insert>
+    <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="priv.zg.domain.UserFriends"
+            useGeneratedKeys="true">
+        insert into user_friends
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">id,</if>
+            <if test="userId != null">user_id,</if>
+            <if test="userFriendsId != null">user_friends_id,</if>
+            <if test="userNote != null">user_note,</if>
+            <if test="userStatus != null">user_status,</if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">#{id,jdbcType=BIGINT},</if>
+            <if test="userId != null">#{userId,jdbcType=BIGINT},</if>
+            <if test="userFriendsId != null">#{userFriendsId,jdbcType=BIGINT},</if>
+            <if test="userNote != null">#{userNote,jdbcType=VARCHAR},</if>
+            <if test="userStatus != null">#{userStatus,jdbcType=VARCHAR},</if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="priv.zg.domain.UserFriends">
+        update user_friends
+        <set>
+            <if test="userId != null">
+                user_id = #{userId,jdbcType=BIGINT},
+            </if>
+            <if test="userFriendsId != null">
+                user_friends_id = #{userFriendsId,jdbcType=BIGINT},
+            </if>
+            <if test="userNote != null">
+                user_note = #{userNote,jdbcType=VARCHAR},
+            </if>
+            <if test="userStatus != null">
+                user_status = #{userStatus,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where id = #{id,jdbcType=BIGINT}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="priv.zg.domain.UserFriends">
+        UPDATE user_friends
+        SET user_id         = #{userId,jdbcType=BIGINT},
+            user_friends_id = #{userFriendsId,jdbcType=BIGINT},
+            user_note       = #{userNote,jdbcType=VARCHAR},
+            user_status     = #{userStatus,jdbcType=VARCHAR}
+        WHERE id = #{id,jdbcType=BIGINT}
+    </update>
+</mapper>

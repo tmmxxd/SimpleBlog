@@ -1,16 +1,26 @@
 package priv.zg.mapper;
 
-import priv.zg.entity.SetArticleLabel;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import priv.zg.domain.SetArticleLabel;
 
 /**
- * <p>
- * 文章设置标签表 Mapper 接口
- * </p>
+ * 针对表【set_article_label(文章设置标签表)】的数据库操作Mapper
  *
- * @author xm
- * @since 2022-02-17
+ * @author tanshizhong
+ * @date 2022-02-21 17:03:53
  */
 public interface SetArticleLabelMapper extends BaseMapper<SetArticleLabel> {
+
+    int deleteByPrimaryKey(Long id);
+
+    int insert(SetArticleLabel record);
+
+    int insertSelective(SetArticleLabel record);
+
+    SetArticleLabel selectByPrimaryKey(Long id);
+
+    int updateByPrimaryKeySelective(SetArticleLabel record);
+
+    int updateByPrimaryKey(SetArticleLabel record);
 
 }
