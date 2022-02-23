@@ -6,7 +6,7 @@ import priv.zg.domain.Comments;
 /**
  * 针对表【comments(评论表)】的数据库操作Mapper
  *
- * @author tanshizhong
+ * @author zg
  * @date 2022-02-21 17:03:53
  */
 public interface CommentsMapper extends BaseMapper<Comments> {

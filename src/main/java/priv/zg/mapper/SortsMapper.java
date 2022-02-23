@@ -6,7 +6,7 @@ import priv.zg.domain.Sorts;
 /**
  * 针对表【sorts(分类表)】的数据库操作Mapper
  *
- * @author tanshizhong
+ * @author zg
  * @date 2022-02-21 17:03:53
  */
 public interface SortsMapper extends BaseMapper<Sorts> {

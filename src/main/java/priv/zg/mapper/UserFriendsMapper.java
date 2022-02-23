@@ -6,7 +6,7 @@ import priv.zg.domain.UserFriends;
 /**
  * 针对表【user_friends(用户好友表)】的数据库操作Mapper
  *
- * @author tanshizhong
+ * @author zg
  * @date 2022-02-21 17:03:53
  */
 public interface UserFriendsMapper extends BaseMapper<UserFriends> {

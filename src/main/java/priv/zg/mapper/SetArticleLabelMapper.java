@@ -6,7 +6,7 @@ import priv.zg.domain.SetArticleLabel;
 /**
  * 针对表【set_article_label(文章设置标签表)】的数据库操作Mapper
  *
- * @author tanshizhong
+ * @author zg
  * @date 2022-02-21 17:03:53
  */
 public interface SetArticleLabelMapper extends BaseMapper<SetArticleLabel> {

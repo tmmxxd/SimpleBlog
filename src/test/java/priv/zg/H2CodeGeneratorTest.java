@@ -28,7 +28,7 @@ import java.util.Map;
 /**
  * 代码生成器模版
  *
- * @author tsz
+ * @author zg
  * @date 2022-02-17
  */
 public class H2CodeGeneratorTest {
@@ -70,7 +70,7 @@ public class H2CodeGeneratorTest {
     private GlobalConfig.Builder globalConfig() {
         return new GlobalConfig.Builder()
                 .fileOverride()
-                .author("xm")
+                .author("zg")
                 .outputDir(System.getProperty("user.dir") + "/src/main/java");
     }
 

@@ -11,7 +11,7 @@ import com.baomidou.mybatisplus.generator.fill.Property;
 /**
  * 代码生成器模版配置
  *
- * @author tsz
+ * @author zg
  * @date 2022-02-17
  */
 public class CodeGeneratorConfig {
@@ -33,7 +33,7 @@ public class CodeGeneratorConfig {
     private GlobalConfig globalConfig() {
         return new GlobalConfig.Builder()
                 .outputDir(System.getProperty("user.dir") + "/src/main/java")
-                .author("tsz")
+                .author("zg")
                 //.enableKotlin()
                 //.enableSwagger()
                 //.dateType(DateType.TIME_PACK)

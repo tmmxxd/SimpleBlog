@@ -12,7 +12,7 @@ import java.util.Collections;
 /**
  * Mybatis Plus代码生成器
  *
- * @author tsz
+ * @author zg
  * @date 2022-02-17
  */
 @SpringBootTest

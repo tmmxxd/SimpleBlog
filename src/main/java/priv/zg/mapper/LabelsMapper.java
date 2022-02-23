@@ -6,7 +6,7 @@ import priv.zg.domain.Labels;
 /**
  * 针对表【labels(标签表)】的数据库操作Mapper
  *
- * @author tanshizhong
+ * @author zg
  * @date 2022-02-21 17:03:53
  */
 public interface LabelsMapper extends BaseMapper<Labels> {
