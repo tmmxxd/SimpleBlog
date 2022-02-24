@@ -5,7 +5,12 @@
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <title>后台管理</title>
-    <jsp:include page="/baseJsp/base.jsp"/>
+    <jsp:include page="/baseJsp/indexBase.jsp"/>
+    <style>
+        #iframeContent .layui-show {
+            height: 100%;
+        }
+    </style>
 </head>
 <body>
 <div id="vue_box">
@@ -36,19 +41,19 @@
                 <!-- 左侧导航区域（可配合layui已有的垂直导航） -->
                 <ul class="layui-nav layui-nav-tree" lay-filter="test">
                     <li class="layui-nav-item"><a href="javascript:void(0);"
-                                                  @click="addTab($event)">用户管理</a>
+                                                  @click="addTab($event,'users/admin')">用户管理</a>
                     </li>
                     <li class="layui-nav-item"><a href="javascript:void(0);"
-                                                  @click="addTab($event)">博文管理</a>
+                                                  @click="addTab($event,'articles/admin')">博文管理</a>
                     </li>
                     <li class="layui-nav-item"><a href="javascript:void(0);"
-                                                  @click="addTab($event)">标签管理</a>
+                                                  @click="addTab($event,'labels/admin')">标签管理</a>
                     </li>
                     <li class="layui-nav-item"><a href="javascript:void(0);"
-                                                  @click="addTab($event)">分类管理</a>
+                                                  @click="addTab($event,'sorts/admin')">分类管理</a>
                     </li>
                     <li class="layui-nav-item"><a href="javascript:void(0);"
-                                                  @click="addTab($event)">评论管理</a>
+                                                  @click="addTab($event,'comments/admin')">评论管理</a>
                     </li>
                 </ul>
             </div>
@@ -60,7 +65,7 @@
                  style="height: 100%;margin: 0;overflow: hidden;">
                 <ul class="layui-tab-title">
                 </ul>
-                <div class="layui-tab-content" style="height: calc(100% - 51px);overflow-y: hidden;">
+                <div class="layui-tab-content" id="iframeContent" style="height: calc(100% - 51px);overflow-y: hidden;">
                 </div>
             </div>
         </div>
@@ -72,14 +77,14 @@
         el: '#vue_box',
         data: {},
         methods: {
-            addTab(event) {
+            addTab(event, address) {
                 let dom = $(event.target);
                 let layId = dom.html();
                 if ($('.layui-tab-title li[lay-id="' + layId + '"]').length <= 0) {
                     element.tabAdd('main', {
                         title: layId
                         ,
-                        content: "<iframe frameborder='0' height='100%' width='100%' src='" + basePath + "get" + "' scrolling='auto'></iframe>"
+                        content: "<iframe frameborder='0' height='100%' width='100%' src='" + basePath + address + "' scrolling='auto'></iframe>"
                         ,
                         id: layId
                     });

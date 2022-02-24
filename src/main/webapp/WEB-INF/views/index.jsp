@@ -3,12 +3,12 @@
 <html>
 <head>
     <meta charset="utf-8"/>
-    <title>首页</title>
+    <title>小博客</title>
     <jsp:include page="/baseJsp/base.jsp"/>
 </head>
 <body>
 <div id="vue_box">
-    <h1>你好啊</h1>
+    <h1>这是首页</h1>
 </div>
 </body>
 <script type="text/javascript">

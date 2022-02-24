@@ -14,8 +14,9 @@ spring:
     view:
       prefix: /WEB-INF/views/
       suffix: .jsp
-  thymeleaf:
-    cache: false
+  jackson:
+    serialization:
+      WRITE_DATES_AS_TIMESTAMPS: true
 #mybatis-plush配置
 mybatis-plus:
   type-aliases-package: priv.zg.pojo
